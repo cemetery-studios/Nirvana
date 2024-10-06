@@ -29,7 +29,7 @@ export default class Help extends Command {
     });
   }
   public async run(client: Bot, ctx: Context): Promise<any> {
-    let user = await client.users.fetch(`976105609936138311`);
+    let user = await client.users.fetch(`1207107876058046494`);
     const command = this.client.commands.filter(
       (cmd) => cmd.category !== "Dev"
     );
@@ -108,11 +108,11 @@ export default class Help extends Command {
       })
       //.setThumbnail(client.user.displayAvatarURL())
       .setDescription(
-        `Enjoy Using Nirvana \n\n > <:discotoolsxyzicon4:1287678143058018385> : Configuration\n > <:discotoolsxyzicon1:1287678154403745854> : Information\n > <:discotoolsxyzicon5:1287678140356890676> : Filters\n > <:discotoolsxyzicon:1287678158518095892> : Music\n >  <:discotoolsxyzicon3:1287678147600322570> : Utility\n\n <:discotoolsxyzicon2:1287678150490329203> [Support](https://discord.gg/BPr8tvwU) . [Vote](https://top.gg/bot/1044688839005966396/vote) . [Invite](https://discord.com/api/oauth2/authorize?client_id=1044688839005966396&permissions=8&scope=bot)`
+        `<:8319folder:1154676193354862633> : Modules\n> <:config:1292463932828549221> : Configuration\n > <:info:1292465072307835000> : Information\n > <:filter:1292465311634690091> : Filters\n > <:music:1292465868881788958> : Music\n > <:utils:1292465829056876584> : Utility\n\n <:link:1154448839483346965> [Support](https://discord.gg/BPr8tvwU) . [Vote](https://top.gg/bot/1044688839005966396/vote) . [Invite](https://discord.com/api/oauth2/authorize?client_id=1044688839005966396&permissions=8&scope=bot)`
       )
       .setColor(this.client.color.main)
       .setFooter({
-        text: `Made By ${user.username}`,
+        text: `Made By jacob`,
         iconURL: user.displayAvatarURL(),
       })
       .setFields();

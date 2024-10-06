@@ -87,19 +87,19 @@ export default class InteractionCreate extends Event {
                 if (command.player.voice) {
                     if (!(interaction.member as GuildMember).voice.channel)
                         return await interaction.reply({
-                            content: `You must be connected to a voice channel to use this \`${command.name}\` command.`,
+                            content: `<:error:1155964919309664307> You must be connected to a voice channel to use this \`${command.name}\` command.`,
                             ephemeral: true,
                         });
 
                     if (!interaction.guild.members.resolve(this.client.user).permissions.has(PermissionFlagsBits.Speak))
                         return await interaction.reply({
-                            content: `I don't have \`CONNECT\` permissions to execute this \`${command.name}\` command.`,
+                            content: `<:error:1155964919309664307> I don't have \`CONNECT\` permissions to execute this \`${command.name}\` command.`,
                             ephemeral: true,
                         });
 
                     if (!interaction.guild.members.resolve(this.client.user).permissions.has(PermissionFlagsBits.Speak))
                         return await interaction.reply({
-                            content: `I don't have \`SPEAK\` permissions to execute this \`${command.name}\` command.`,
+                            content: `<:error:1155964919309664307> I don't have \`SPEAK\` permissions to execute this \`${command.name}\` command.`,
                             ephemeral: true,
                         });
 
@@ -108,7 +108,7 @@ export default class InteractionCreate extends Event {
                         !interaction.guild.members.resolve(this.client.user).permissions.has(PermissionFlagsBits.RequestToSpeak)
                     )
                         return await interaction.reply({
-                            content: `I don't have \`REQUEST TO SPEAK\` permission to execute this \`${command.name}\` command.`,
+                            content: `<:error:1155964919309664307> I don't have \`REQUEST TO SPEAK\` permission to execute this \`${command.name}\` command.`,
                             ephemeral: true,
                         });
                     if (interaction.guild.members.resolve(this.client.user).voice.channel) {
@@ -117,7 +117,7 @@ export default class InteractionCreate extends Event {
                             (interaction.member as GuildMember).voice.channelId
                         )
                             return await interaction.reply({
-                                content: `You are not connected to <#${interaction.guild.members.resolve(this.client.user).voice.channel.id
+                                content: `<:error:1155964919309664307> You are not connected to <#${interaction.guild.members.resolve(this.client.user).voice.channel.id
                                     }> to use \`${command.name}\` command.`,
                                 ephemeral: true,
                             });
