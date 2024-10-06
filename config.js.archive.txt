@@ -1,0 +1,47 @@
+require("dotenv").config();
+
+module.exports = {
+
+    token: "MTEyMzU3NzM2MzMzMTAzOTIzMw.GdzPAO.Fzkl0cQXx1gUQnfxytOrLC3cYbHHRRAYRZAhig",
+    clientID: "1044688839005966396",
+    prefix: ">",
+    ownerID: ['978930369392951366'],
+    SpotifyID: "1dd14b7a23ca4df299b29ce919e9d4a5",
+    SpotifySecret: "88135bf84dee480d8690d0d8fa2b0e29",
+    mongourl: "mongodb+srv://KarmaDev:karma1950@cluster0.8j3mrxc.mongodb.net/?retryWrites=true&w=majority",
+    embedColor: `#d3e7f3`,
+    logs: "1215370218730422292",
+    errorLogsChannel: "1215370260341989396",
+    SearchPlatform: "youtube",
+    AggregatedSearchOrder: "youtube, youtube music, youtube, soundcloud",
+    links: {
+        img: 'https://media.discordapp.net/attachments/1079811259291144224/1099599620176355339/1682235312323.jpg?width=853&height=479',
+        support: 'https://discord.gg/XFbKYhFpSu',
+        invite: 'https://discord.com/api/oauth2/authorize?client_id=1044688839005966396&permissions=8&scope=bot'
+    },
+    Webhooks: {
+        node_log: 'https://discord.com/api/webhooks/1215528464606822431/liGy9kLkKYsZF7zYPROgn4lneQ3vdK4LY1FUt8LyhW9ExE08GkfloBCQGuqHY3taJWjC',
+        player_create: 'https://discord.com/api/webhooks/1215528990761156648/higffsJOWeqckt0idK8TFV77l8VFTEseHa6kJxr7sQLFQFRiMA1Yk-I_xBzn0bEZs5N3',
+        player_delete: 'https://discord.com/api/webhooks/1215528990761156648/higffsJOWeqckt0idK8TFV77l8VFTEseHa6kJxr7sQLFQFRiMA1Yk-I_xBzn0bEZs5N3',
+    },
+    nodes: [{
+        host: "lavalink.teramont.net",
+        port: parseInt("25565"),
+        password: "eHKuFcz67k4lBS64",
+        secure: parseBoolean("false")
+    }],
+
+}
+
+function parseBoolean(value) {
+    if (typeof (value) === 'string') {
+        value = value.trim().toLowerCase();
+    }
+    switch (value) {
+        case true:
+        case "true":
+            return true;
+        default:
+            return false;
+    }
+}

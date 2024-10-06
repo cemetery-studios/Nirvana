@@ -1,0 +1,43 @@
+{
+  "token": "MTA0NDY4ODgzOTAwNTk2NjM5Ng.GlZM8y.nxUGtIKkMwdlHtZZ_LAOYJjfb0-jFINqAtjdQ8",
+  "owners": ["976105609936138311", "978930369392951366", "983787597627273267"],
+  "use_cache": false,
+  "mongo_uri": "mongodb+srv://where11337:nbdNSWPPbppbWYAg@bind.drprb.mongodb.net/",
+  "topggapi": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwNDQ2ODg4MzkwMDU5NjYzOTYiLCJib3QiOnRydWUsImlhdCI6MTcxNTE3OTE3N30.tuHytJci0H7xwOyTOx8HYFR4wdEIGTkoVZhWP3gHr38",
+  "prefix": ">",
+  "searchEngine": "spsearch",
+  "maxQueueSize": 100,
+  "webhooks": {
+    "nodelog": "https://discord.com/api/webhooks/1255229048418865307/GiZtOtbQge_pT5N9wkKjgkrW_1evxxBZe8XgTATk-FNrxSPH7WbGB8nnhKsrTeBO0PM1",
+    "player": "https://discord.com/api/webhooks/1255228845263425588/KotDY8B-58yoiqxOCNCu9w4pmHhRqEqHvQxIrCt_hOM3FYmKrkjh7gbW1mPdyYq1rpxY",
+    "error": "https://discord.com/api/webhooks/1255228536466178048/IKuP3PmpDLjix4-AkK_3Vv1ekJ3qPBGgdXmPKR-Mens_uaOpDiQQEhZj6tOk-h62gYxq",
+    "command": "https://discord.com/api/webhooks/1255229819889909822/-o03JnNLzzcrffvrmnEHv8zWRd_PmWVEHCFRHGe13irEDefjmD28rK0eCBXhWzZDwSjQ",
+    "misc": "https://discord.com/api/webhooks/1255230038778052619/60UUKTj5n3WimBgkHHLMSgh7zCUAyrNrvPeGe03qenwyda082seOEAdl1Hi0MES-CmNN",
+    "event": "https://discord.com/api/webhooks/1259308748518723615/RaKC_7Ax8DZ3maujaLxFn9k74CkpKeUckY0t-HxKBdH78XlmjHYMpOXXAY95tGMZh_MD",
+    "warn": "https://discord.com/api/webhooks/1259309626743324743/g642oWO7wPaX9THY1n-j1xlr7WzhOWXYQSYtEqZhdS3nMbZO856TDm6Vhm0BVMmFLWvc",
+    "logs": "https://discord.com/api/webhooks/1259318791700222044/7CGfxUw08xi3q_Pi02YUUo0OcBzPZuNZsTkNnh8sBrgHRC_Yx0AhR7GND4ychlpsuUZt",
+    "joins": "https://discord.com/api/webhooks/1273750494761979974/hjmb8T5tL8SZMuToB0vJg_edHzYU6368jWRE7pOP97DagRzzug-T8Q-5g2cN_r5F_apY",
+    "leaves": "https://discord.com/api/webhooks/1273750603813879818/i3zfyfc_Pm88Ryp9o49YjSyR0yc7VQarz1TJ5VM9J-ABZKpiBO7umoDOS0gX6t925J7l"
+  },
+  "url": {
+    "helppage": "https://media.discordapp.net/attachments/1272906205139963968/1273235333215162418/commands.png?ex=66bde04f&is=66bc8ecf&hm=a68b1a713c3ad73634b903e461bfc11ba8fe82c0fcabf7c04bda1ab3cf2cc7fc&=&format=webp&quality=lossless&width=197&height=280",
+    "infopage": "https://media.discordapp.net/attachments/1163186583546101874/1242796882669994045/banner_2.png?ex=664f244a&is=664dd2ca&hm=460e545227f590be9da6a7e32e2ed08d89a7ab4923c4d5aa4c1c76b53d8cbd6e&=&format=webp&quality=lossless&width=480&height=187"
+  },
+  "restApi": {
+    "port": 3333
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "db": 0
+  },
+  "nodes": [
+    {
+      "name": "NODE [Nirvana]",
+      "url": "41.216.188.45:2333",
+      "auth": "karma!@1950",
+      "secure": false
+    }
+  ],
+  "logChannelId": "1273649394595532901"
+}
