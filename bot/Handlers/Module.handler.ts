@@ -19,7 +19,7 @@ export class ModuleHandler {
     Modules.forEach(async (module) => {
       try {
         const file = (await import(`../Modules/${module}/index.js`)).default;
-        const mod:Module = new file(this.client,module)
+        const mod: Module = new file(this.client, module)
         await mod.load();
       } catch (e) {
         // this.client.logger.error(module, e);
