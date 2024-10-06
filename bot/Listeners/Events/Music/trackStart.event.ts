@@ -2,18 +2,11 @@ import { Player } from "shoukaku";
 import { Bot } from "../../../Clients/Bot.client.js";
 import Dispatcher, { Song } from "../../../Modules/Music/Dispatcher.music.js";
 import Event from "../../../Structures/Event.structure.js";
-import Canvas from "canvas";
-import StackBlur from "stackblur-canvas";
-import getColors from "get-image-colors";
 import { Emoji } from "../../../utils/Emotes.utils.js";
 import {
   ActionRowBuilder,
   StringSelectMenuBuilder,
-  AttachmentBuilder,
   TextChannel,
-  ComponentType,
-  ButtonBuilder,
-  PermissionFlagsBits,
 } from "discord.js";
 import { REST } from "discord.js";
 
