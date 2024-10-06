@@ -1,5 +1,6 @@
 {
   "token": "MTA0NDY4ODgzOTAwNTk2NjM5Ng.GlZM8y.nxUGtIKkMwdlHtZZ_LAOYJjfb0-jFINqAtjdQ8",
+  "testToken": "OTg1NTMwODI2NDI5MTkwMTc1.GHToj0.MAxuxFiFqj9_ydvgerW2DR574qprRPSdgzt6Uc",
   "owners": ["976105609936138311", "978930369392951366", "1207107876058046494"],
   "use_cache": false,
   "mongo_uri": "mongodb+srv://where11337:nbdNSWPPbppbWYAg@bind.drprb.mongodb.net/",

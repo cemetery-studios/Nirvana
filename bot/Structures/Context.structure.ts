@@ -9,6 +9,7 @@ import {
   GuildTextBasedChannel,
   Message,
   PartialDMChannel,
+  PartialGroupDMChannel,
   TextChannel,
   User,
 } from "discord.js";
@@ -24,10 +25,7 @@ export default class Context {
   public client: Bot;
   public author: User | null;
   public channel:
-    | PartialDMChannel
-    | GuildTextBasedChannel
-    | TextChannel
-    | DMChannel
+    | Exclude<PartialDMChannel | GuildTextBasedChannel | DMChannel, PartialGroupDMChannel>
     | null = null;
   public guild: Guild | null;
   public createdAt: Date;
@@ -44,12 +42,12 @@ export default class Context {
     this.interaction =
       this.ctx instanceof ChatInputCommandInteraction ? this.ctx : null;
     this.message = this.ctx instanceof Message ? this.ctx : null;
-    this.channel = this.ctx.channel;
+    this.channel = this.ctx.channel as Exclude<PartialDMChannel | GuildTextBasedChannel | DMChannel, PartialGroupDMChannel>;
     this.id = ctx.id;
     this.channelId = ctx.channelId;
     this.client = ctx.client as Bot;
     this.author = ctx instanceof Message ? ctx.author : ctx.user;
-    this.channel = ctx.channel;
+    this.channel = ctx.channel as Exclude<PartialDMChannel | GuildTextBasedChannel | DMChannel, PartialGroupDMChannel>;
     this.guild = ctx.guild;
     this.createdAt = ctx.createdAt;
     this.createdTimestamp = ctx.createdTimestamp;
