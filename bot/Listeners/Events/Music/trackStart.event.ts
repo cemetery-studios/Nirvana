@@ -76,33 +76,21 @@ export default class TrackStart extends Event {
       ctx.drawImage(TrackImage, 715.3, 55.8, 240, 240);
     }
 
-    const PlayerImage = new AttachmentBuilder(await canvas.toBuffer(), {
-      name: "nirvanamusic.png",
-    });
     const colors = await getColors(x.replace("webp", "png"));
     const embedcolor = colors[0].hex();
 
     const PlayerEmbed = this.client
       .embed()
-      .setColor(embedcolor)
+      .setColor("#5865F2")
+      .setThumbnail("https://cdn.discordapp.com/avatars/1044688839005966396/67f29712ed35753956e0f346d78b3422.png?size=2048")
       .setTitle("Now Playing")
       .setDescription(
-        `[${track.info.title}](${track.info.uri}) — ${track.info.author}`
+        `Song : [${track.info.title}](${track.info.uri}) - *${track.info.author}*\n Requested By : *${track.info.requester.displayName}*\n Source : *${track.info.sourceName}*`
       )
       .setFooter({
-        text: `Requested by @${track.info.requester.username}`,
+        text: `Powered by Nirvana Music`,
         iconURL: track.info.requester.displayAvatarURL(),
       });
-
-    if (
-      guild.members.me
-        .permissionsIn(channel)
-        .has(PermissionFlagsBits.AttachFiles)
-    ) {
-      PlayerEmbed.setImage("attachment://nirvanamusic.png");
-    } else {
-      PlayerEmbed.setThumbnail(track.info.artworkUrl!);
-    }
 
     const PlayerButtons1 = [
       {
@@ -267,13 +255,6 @@ export default class TrackStart extends Event {
 
     const message = await channel.send({
       embeds: [PlayerEmbed],
-      files: [
-        guild.members.me
-          .permissionsIn(channel)
-          .has(PermissionFlagsBits.AttachFiles)
-          ? PlayerImage
-          : null,
-      ],
       components: [
         {
           type: 1,
