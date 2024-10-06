@@ -46,39 +46,6 @@ export default class TrackStart extends Event {
       },
     });
 
-    const x = track.info.artworkUrl; // Image Of Music
-
-    const canvas = Canvas.createCanvas(1000, 360);
-    const ctx = canvas.getContext("2d");
-    const TrackImage = await Canvas.loadImage(x);
-    const TrackTitle = track.info.title
-      .toString()
-      .split(" ")
-      .slice(0, 5)
-      .join(` `);
-
-    ctx.drawImage(TrackImage, 0, 0, 1200, 560);
-    StackBlur.canvasRGBA(canvas, 0, 0, canvas.width, canvas.height, 30);
-    // Track Title
-    ctx.font = "bold 35px sans-serif";
-    ctx.fillStyle = "#FFFFFF";
-    ctx.textAlign = "left";
-    ctx.fillText(TrackTitle, 40, 140.7);
-    // Track Author
-    ctx.font = "30px sans-serif";
-    ctx.fillStyle = "#FFFFFF";
-    ctx.textAlign = "left";
-    ctx.fillText(track.info.author, 40, 180);
-    // Track Thumbnail
-    if (track.info.sourceName === "youtube") {
-      ctx.drawImage(TrackImage, 716.2, 115.2, 260.8, 150.5);
-    } else {
-      ctx.drawImage(TrackImage, 715.3, 55.8, 240, 240);
-    }
-
-    const colors = await getColors(x.replace("webp", "png"));
-    const embedcolor = colors[0].hex();
-
     const PlayerEmbed = this.client
       .embed()
       .setColor("#5865F2")
