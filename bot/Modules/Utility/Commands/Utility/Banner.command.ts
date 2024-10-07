@@ -1,8 +1,7 @@
 import { Command } from '../../../../Structures/Command.structure.js';
 import { Bot } from '../../../../Clients/Bot.client.js';
 import Context from '../../../../Structures/Context.structure.js';
-import axios from 'axios';
-import { ApplicationCommandOptionType } from 'discord.js';
+import { ApplicationCommandOptionType, APIUser } from 'discord.js';
 
 export default class Banner extends Command {
     constructor(client: Bot) {
@@ -52,61 +51,60 @@ export default class Banner extends Command {
                 content: "I couldn't find that user.",
             });
         }
-        axios
-            .get(`https://discord.com/api/users/${member.id}`, {
-                headers: {
-                    Authorization: `Bot ${client.token}`,
+
+        const response = await fetch(`https://discord.com/api/users/${member.id}`, {
+            headers: {
+                Authorization: `Bot ${client.token}`,
+            },
+        })
+
+        const { banner } = await response.json() as APIUser;
+
+        if (!banner) {
+            return ctx.sendMessage({
+                content: "This user doesn't have a banner.",
+            });
+        } else {
+            const extension = banner.startsWith("a_") ? '.gif?size=4096' : '.png?size=4096';
+            const url = `https://cdn.discordapp.com/banners/${member.id}/${banner}${extension}`;
+
+            let embed = this.client
+                .embed()
+                .setTitle(`${member.username}'s Banner`)
+                .setImage(url)
+                .setColor(this.client.color.main);
+            const compos = [
+                {
+                    type: 2,
+                    style: 5,
+                    label: "JPEG",
+                    url: `https://cdn.discordapp.com/banners/${member.id}/${banner}.png?size=4096`,
                 },
-            })
-            .then((res) => {
-                const { banner } = res.data;
-                if (!banner) {
-                    return ctx.sendMessage({
-                        content: "This user doesn't have a banner.",
-                    });
-                }
-                else {
-                    const extension = banner.startsWith("a_") ? '.gif?size=4096' : '.png?size=4096';
-                    const url = `https://cdn.discordapp.com/banners/${member.id}/${banner}${extension}`;
+                {
+                    type: 2,
+                    style: 5,
+                    label: "PNG",
+                    url: `https://cdn.discordapp.com/banners/${member.id}/${banner}.png?size=4096`,
+                },
+            ];
+            if (banner.startsWith("a_")) {
+                compos.push({
+                    type: 2,
+                    style: 5,
+                    label: "GIF",
+                    url: `https://cdn.discordapp.com/banners/${member.id}/${banner}.gif?size=4096`,
+                });
+            }
 
-                    let embed = this.client
-                        .embed()
-                        .setTitle(`${member.username}'s Banner`)
-                        .setImage(url)
-                        .setColor(this.client.color.main);
-                    const compos = [
-                        {
-                            type: 2,
-                            style: 5,
-                            label: "JPEG",
-                            url: `https://cdn.discordapp.com/banners/${member.id}/${banner}.png?size=4096`,
-                        },
-                        {
-                            type: 2,
-                            style: 5,
-                            label: "PNG",
-                            url: `https://cdn.discordapp.com/banners/${member.id}/${banner}.png?size=4096`,
-                        },
-                    ];
-                    if (banner.startsWith("a_")) {
-                        compos.push({
-                            type: 2,
-                            style: 5,
-                            label: "GIF",
-                            url: `https://cdn.discordapp.com/banners/${member.id}/${banner}.gif?size=4096`,
-                        });
+            return ctx.sendMessage({
+                embeds: [embed],
+                components: [
+                    {
+                        type: 1,
+                        components: compos
                     }
-
-                    return ctx.sendMessage({
-                        embeds: [embed],
-                        components: [
-                            {
-                                type: 1,
-                                components: compos
-                            }
-                        ],
-                    });
-                }
-            })
+                ],
+            });
+        }
     }
 }

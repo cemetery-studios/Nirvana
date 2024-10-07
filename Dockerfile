@@ -1,37 +1,18 @@
-ARG NODE_VERSION=20.14.0
+FROM node:18-alpine AS builder
+WORKDIR /usr/src/nirvana
 
-FROM node:${NODE_VERSION}-alpine AS builder
-
-# Install dependencies
-WORKDIR /usr/src/
 COPY package*.json ./
-
-RUN apk add --no-cache \
-    python3 \
-    build-base \
-    g++ \
-    cairo-dev \
-    pango-dev \
-    libjpeg-turbo-dev \
-    giflib-dev \
-    librsvg-dev \
-    pixman-dev \
-    libc6-compat # Adds glibc
-
-RUN npm ci --only=production
-COPY . .
 RUN npm install
+
+COPY . .
+
 RUN npm run build
 
-FROM node:${NODE_VERSION}-alpine AS production
-WORKDIR /usr/src/
-COPY --from=builder /usr/src/node_modules ./node_modules
-COPY --from=builder /usr/src/dist ./dist
-COPY --from=builder /usr/src/prisma ./prisma
-COPY --from=builder /usr/src/package*.json ./
-RUN addgroup -S nirvana && adduser -S developers -G nirvana
-RUN chown -R developers:nirvana /usr/src
+FROM node:18-alpine AS runtime
+WORKDIR /usr/src/nirvana
 
-USER developers
+COPY --from=builder /usr/src/nirvana/package*.json ./
+COPY --from=builder /usr/src/nirvana/dist ./dist
+COPY --from=builder /usr/src/nirvana/node_modules ./node_modules
 
-CMD ["npm", "start"]
+CMD ["node", "dist/index.js"]
